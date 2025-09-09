@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json({ limit: '10mb' }));
 app.use(cors());
-app.use(express.static('public')); 
+//app.use(express.static('public')); 
 
 if (!process.env.GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY is not defined.");
