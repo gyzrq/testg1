@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工业大模型交互终端</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-title">
+                <h1>工业大模型交互终端</h1>
+                <p>Industrial AI Interface</p>
+            </div>
+            <div class="system-status">
+                <span class="status-light"></span>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="initial-view">
+                <div class="robot-container">
+                    <svg id="robot-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs><filter id="glow"><feGaussianBlur stdDeviation="1.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                        <path id="head-outline" d="M 25 30 Q 20 30 20 35 V 70 Q 20 75 25 75 H 75 Q 80 75 80 70 V 35 Q 80 30 75 30 Z" />
+                        <rect id="eye" x="30" y="45" width="40" height="10" rx="2" />
+                        <line id="antenna-left" x1="35" y1="30" x2="25" y2="20" /><line id="antenna-right" x1="65" y1="30" x2="75" y2="20" />
+                        <circle id="antenna-dot-left" cx="25" cy="20" r="2" /><circle id="antenna-dot-right" cx="75" cy="20" r="2" />
+                        <path id="circuit-1" d="M 25 40 H 15 V 60 H 25" /><path id="circuit-2" d="M 75 45 H 85 V 55 H 75" />
+                    </svg>
+                </div>
+                <h2>你好，我是工业智能助手</h2>
+                <p class="subtitle">你可以直接提问，或尝试以下示例：</p>
+                <div class="suggestion-chips">
+                    <button class="chip">解释一下什么是“数字孪生”</button>
+                    <button class="chip">对比一下OPC-UA和MQTT协议的优缺点</button>
+                    <button class="chip">如何对工厂设备进行预测性维护？</button>
+                    <button class="chip">生成一段用于控制机械臂的Python代码</button>
+                </div>
+            </div>
+            <div class="chat-box" id="chat-box"></div>
+        </div>
+        <div class="image-preview-area" id="image-preview-area">
+             <div class="image-preview-container">
+                <img id="preview-image" src="#" alt="Image preview" />
+                <button id="remove-image-btn" title="移除图片">&times;</button>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <form id="chat-form">
+                <input type="file" id="image-input" accept="image/*" style="display: none;">
+                <button type="button" id="attach-btn" title="上传图片">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" d="M18.97 3.659a2.25 2.25 0 00-3.182 0l-10.5 10.5a.75.75 0 001.06 1.06l10.5-10.5a.75.75 0 011.06 0s.318.319.095.542l-7.379 7.379a2.25 2.25 0 01-3.182 0L2.929 8.591a.75.75 0 00-1.061 1.06l4.09 4.09a3.75 3.75 0 105.304-5.303l7.468-7.468a3.75 3.75 0 015.303 5.304l-8.536 8.535a.75.75 0 01-1.06-1.06l8.535-8.535a2.25 2.25 0 00-3.182-3.182z" clip-rule="evenodd" /></svg>
+                </button>
+                <div class="input-wrapper"><input type="text" id="user-input" placeholder="输入指令或问题 (可附带图片)..." autocomplete="off"></div>
+                <button type="submit" id="send-btn" title="发送指令">
+                    <svg xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
